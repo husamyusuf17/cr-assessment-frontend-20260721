@@ -228,4 +228,51 @@ describe('CrDetailComponent', () => {
 		expect(changedRow.textContent).toContain('Widget B');
 		expect(changedRow.textContent).toContain('Widget B (new supplier)');
 	});
+	it('shows the loading state while the change request is being fetched', async () => {
+		TestBed.configureTestingModule({
+			imports: [CrDetailComponent],
+			providers: [
+				{
+					provide: SessionService,
+					useValue: { user: users.approver },
+				},
+			],
+		});
+
+		await TestBed.compileComponents();
+
+		const fixture = TestBed.createComponent(CrDetailComponent);
+		fixture.componentInstance.id = 'CR-1';
+
+		fixture.detectChanges();
+
+		expect(fixture.nativeElement.querySelector('.cr-detail__loading')).not.toBeNull();
+	});
+	it('shows an error state when loading the change request fails', async () => {
+		TestBed.configureTestingModule({
+			imports: [CrDetailComponent],
+			providers: [
+				{
+					provide: SessionService,
+					useValue: { user: users.approver },
+				},
+			],
+		});
+
+		await TestBed.compileComponents();
+
+		const api = TestBed.inject(CrApiService);
+		api.failNext = true;
+
+		const fixture = TestBed.createComponent(CrDetailComponent);
+		fixture.componentInstance.id = 'CR-1';
+
+		fixture.detectChanges();
+
+		await flush();
+		fixture.detectChanges();
+
+		expect(fixture.nativeElement.querySelector('.cr-detail__error')).not.toBeNull();
+	});
+	
 });
