@@ -57,6 +57,27 @@ describe('CrDetailComponent', () => {
 		expect(entries[1].textContent).toContain('SUBMIT');
 		expect(entries[2].textContent).toContain('SEND_FOR_APPROVAL');
 	});
+	it('reloads the detail when the id input changes', async () => {
+		const fixture = await render(users.approver, 'CR-1');
+
+		expect(fixture.nativeElement.querySelector('.cr-detail__header h2').textContent).toContain('Add 1 unit of SKU-A');
+
+		fixture.componentInstance.id = 'CR-2';
+
+		fixture.componentInstance.ngOnChanges({
+			id: {
+				currentValue: 'CR-2',
+				previousValue: 'CR-1',
+				firstChange: false,
+				isFirstChange: () => false,
+			},
+		});
+
+		await flush();
+		fixture.detectChanges();
+
+		expect(fixture.nativeElement.querySelector('.cr-detail__header h2').textContent).toContain('Replace SKU-B supplier');
+	});
 
 	it('hides Reject for a read-only viewer on a pending CR', async () => {
 		const fixture = await render(users.viewer, 'CR-1');
@@ -274,5 +295,4 @@ describe('CrDetailComponent', () => {
 
 		expect(fixture.nativeElement.querySelector('.cr-detail__error')).not.toBeNull();
 	});
-	
 });

@@ -56,9 +56,9 @@ I sort a copied audit array instead of calling `.sort()` directly on the API-pro
 
 ## 6. Where I used AI
 
-I used ChatGPT as a development assistant during the assessment, mainly to review implementation decisions, reason through failing tests and edge cases, and identify additional scenarios worth covering in the test suite.
+I used AI as a development assistant during the assessment, mainly to review implementation decisions, reason through failing tests and edge cases, and identify additional scenarios worth covering in the test suite.
 
-I implemented and validated the changes incrementally in the existing Angular architecture, reviewed the component state, template behavior, permission logic, and reactive-form validation myself, and ran the focused and full test suites after each milestone. AI was used as a review and reasoning aid rather than as a replacement for understanding or ownership of the implementation.
+I implemented and validated the changes incrementally in the existing Angular architecture, reviewed the component state, template behavior, permission logic, and reactive-form validation myself, and ran the focused and full test suites after each milestone. AI was only used as a review and reasoning aid rather than as a replacement for understanding or ownership of the implementation.
 
 ## 7. What I'd improve with more time
 
