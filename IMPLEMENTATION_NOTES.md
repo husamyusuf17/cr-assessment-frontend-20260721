@@ -40,7 +40,7 @@ I used both pure unit tests and rendered component tests.
 
 The list tests cover loaded rows, API-empty state, loading, errors, status filtering, and a filter with no matching results. The detail tests cover title rendering, totals/delta, description changes in the diff, chronological timeline ordering, read-only permissions, non-pending CRs, rejection validation, successful Approve/Reject flows, slow-request duplicate prevention, action failures, initial loading, and initial load errors.
 
-The final suite contains 25 passing tests across the diff, list, and detail specifications. I also ran `npm run typecheck`, `npm run lint`, `npm run build`, and the full `npm test` suite successfully.
+The final suite contains 26 passing tests across the diff, list, and detail specifications. I also ran `npm run typecheck`, `npm run lint`, `npm run build`, and the full `npm test` suite successfully.
 
 ## 5. Assumptions and judgment calls
 
